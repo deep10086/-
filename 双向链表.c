@@ -5,7 +5,7 @@ typedef struct bioNode {
 	ElemType data;
 	struct bioNode* last, * next;
 }BioNode;
-//��ʼ������
+//初始化链表
 BioNode* initBioNode() {
 	BioNode* head = (BioNode*)malloc(sizeof(BioNode));
 	head->next = NULL;
@@ -13,7 +13,7 @@ BioNode* initBioNode() {
 	head->data = 0;
 	return head;
 }
-//ͷ�巨
+//头插法
 void insertFromHead(BioNode* head, ElemType e) {
 	BioNode* p = (BioNode*)malloc(sizeof(BioNode));
 	p->data = e;
@@ -24,7 +24,7 @@ void insertFromHead(BioNode* head, ElemType e) {
 	}
 	head->next = p;
 }
-//����(������ͷ�����������ݣ�
+//遍历(避免了头结点的无用数据）
 void listNode(BioNode* head)
 {
 	BioNode* p = head->next;
@@ -35,7 +35,7 @@ void listNode(BioNode* head)
 	}
 	printf("\n");
 }
-//��ȡβ�����
+//获取尾部结点
 BioNode* get_tail(BioNode* L)
 {
 	BioNode* p = L;
@@ -46,7 +46,7 @@ BioNode* get_tail(BioNode* L)
 	return p;
 }
 
-//β�巨(voidҲ�У�
+//尾插法(void也行）
 BioNode* insertTail(BioNode* tail, ElemType e)
 {
 	BioNode* p = (BioNode*)malloc(sizeof(BioNode));
@@ -56,7 +56,7 @@ BioNode* insertTail(BioNode* tail, ElemType e)
 	p->next = NULL;
 	return p;
 }
-//�ͷ�����
+//释放链表
 void freeList(BioNode* L)
 {
 	BioNode* slow = L;
@@ -82,28 +82,28 @@ void freeList(BioNode* L)
 //}
 
 void insertPos(BioNode* head, int pos, ElemType e) {
-	//ָ��λ�ò���(�������Ŀɶ����е��)
-	/*2. ͳһ�����߼�
-		���飺��ͷ�塢β����м����ͳһ�� insertPos()��ͨ��λ�ò������ơ����磺
-		pos = 1 ��ʾͷ�壨�����⴦������
-		pos = N + 1��NΪ��ǰ���ȣ���ʾβ�塣*/
+	//指定位置插入(这个代码的可读性有点差)
+	/*2. 统一插入逻辑
+		建议：将头插、尾插和中间插入统一到 insertPos()，通过位置参数控制。例如：
+		pos = 1 表示头插（需特殊处理）。
+		pos = N + 1（N为当前长度）表示尾插。*/
 	if (pos < 1) {
-		printf("����λ�ò���С��1\n");
+		printf("插入位置不能小于1\n");
 		return;
 	}
 	BioNode* find = head;
 	BioNode* p = (BioNode*)malloc(sizeof(BioNode));
 	p->data = e;
-	for (int i = 0; i < pos - 1; i++)//�������ҵ�ָ��λ��
+	for (int i = 0; i < pos - 1; i++)//这里能找到指定位置
 	{
 		 find= find->next;
 	}
-	p->next = find->next;//����ע�� ��һ��д��p=��
+	p->next = find->next;//这里注意 第一次写成p=了
 	p->last = find;
 	find->next->last = p;
 	find->next = p;
 }
-//ɾ���ڵ�(�������д�� ����ճ����)
+//删除节点(这个懒得写了 复制粘贴的)
 //int deleteNode(Node* L, int pos)
 //{
 //	Node* p = L;
@@ -120,7 +120,7 @@ void insertPos(BioNode* head, int pos, ElemType e) {
 //
 //	if (p->next == NULL)
 //	{
-//		printf("Ҫɾ����λ�ô���\n");
+//		printf("要删除的位置错误\n");
 //		return 0;
 //	}
 //
