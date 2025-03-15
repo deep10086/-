@@ -6,17 +6,17 @@ typedef struct {
 	ElemType* data;
 	int length;
 }SeqList;
-//³õÊ¼»¯ÏßĞÔ±í
+//åˆå§‹åŒ–çº¿æ€§è¡¨
 SeqList* iniList() {
 	SeqList* L = (SeqList*)malloc(sizeof(SeqList));
 	L->data = (ElemType*)malloc(sizeof(ElemType) * MAXSIZE);
 	L->length = 0;
 	return L;
 }
-//Ìí¼ÓÔªËØ
+//æ·»åŠ å…ƒç´ 
 void appendElem(SeqList* L, ElemType e) {
 	if (L->length >= MAXSIZE) {
-		printf("ÂúÁË");
+		printf("æ»¡äº†");
 		return;
 	}
 	else {
@@ -24,21 +24,21 @@ void appendElem(SeqList* L, ElemType e) {
 		L->length++;
 	}
 }
-//±éÀú
+//éå†
 void looklook(SeqList* L) {
 	for (int i = 0; i < L->length; i++) {
 		printf("%d ", L->data[i]);
 	}
 	printf("\n");
 }
-//²åÈë
+//æ’å…¥
 void insertElem(SeqList* L, int pos, ElemType e) {
 	if (L->length >= MAXSIZE) {
-		printf("ÂúÁË");
+		printf("æ»¡äº†");
 		return;
 	}
 	if (pos<1 || pos>L->length + 1) {
-		printf("Î»ÖÃ´íÁË");
+		printf("ä½ç½®é”™äº†");
 		return;
 	}
 	else {
@@ -50,26 +50,26 @@ void insertElem(SeqList* L, int pos, ElemType e) {
 		L->length++;
 	}
 }
-//É¾³ı
+//åˆ é™¤
 void DeletElem(SeqList* L, int pos) {
 	if (pos<1 || pos>L->length) {
-		printf("Î»ÖÃ´íÁË");
+		printf("ä½ç½®é”™äº†");
 	}
 	else {
-		printf("É¾³ıµÄÊÇ%d\n", L->data[pos - 1]);
+		printf("åˆ é™¤çš„æ˜¯%d\n", L->data[pos - 1]);
 		for (int i = pos; i < L->length; i++) {
 			L->data[i - 1] = L->data[i];
 		}
 		L->length--;
 	}
 }
-//²éÕÒ
+//æŸ¥æ‰¾
 void findElem(SeqList* L, ElemType e) {
 	for (int i = 0; i < L->length; i++) {
 		if (e == L->data[i])
-			printf("ÕÒµ½ÁË ÊÇµÚ%d¸ö", i + 1);
+			printf("æ‰¾åˆ°äº† æ˜¯ç¬¬%dä¸ª", i + 1);
 	}
-}//Ïú»Ù
+}//é”€æ¯
 void destroy(SeqList* L) {
 	free(L->data);
 	free(L);
