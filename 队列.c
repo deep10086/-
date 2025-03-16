@@ -12,7 +12,7 @@ typedef struct
 
 }Queue;
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 Queue* initQueue()
 {
 	Queue* q = (Queue*)malloc(sizeof(Queue));
@@ -22,12 +22,12 @@ Queue* initQueue()
 	return q;
 }
 
-//ÅÐ¶Ï¶ÓÁÐÊÇ·ñÎª¿Õ
+//åˆ¤æ–­é˜Ÿåˆ—æ˜¯å¦ä¸ºç©º
 int isEmpty(Queue* Q)
 {
 	if (Q->front == Q->rear)
 	{
-		printf("¿ÕµÄ\n");
+		printf("ç©ºçš„\n");
 		return 1;
 	}
 	else
@@ -36,19 +36,19 @@ int isEmpty(Queue* Q)
 	}
 }
 
-//³ö¶Ó
+//å‡ºé˜Ÿ
 ElemType dequeue(Queue* Q)
 {
 	if (Q->front == Q->rear)
 	{
-		printf("¿ÕµÄ\n");
+		printf("ç©ºçš„\n");
 		return 0;
 	}
 	ElemType e = Q->data[Q->front];
 	Q->front++;
 	return e;
 }
-//Èë¶Ó´úÂë¿é
+//å…¥é˜Ÿä»£ç å—
 void eQueue(Queue* Q,ElemType e){
 	if (Q->rear>=MAXSIZE) {
 		if (QueueFull(Q) )
@@ -65,14 +65,14 @@ int QueueFull(Queue* Q) {
 	if (Q->front > 0) {
 		int depth = Q->front;
 		for (int i = Q->front; i <= Q->rear; i++) {
-			Q->data[i - depth] = Q->data[i];//Õâ¸öµØ·½»áÔ½½ç·ÃÎÊ
+			Q->data[i - depth] = Q->data[i];//è¿™ä¸ªåœ°æ–¹ä¼šè¶Šç•Œè®¿é—®
 			Q->front = 0;
 			return 0;
 		}
 	}
 	else
 	{
-		printf("ÂúÁË");
+		printf("æ»¡äº†");
 		return 1;
 	}
 }
@@ -91,17 +91,17 @@ int QueueFull(Queue* Q) {
 	}
 	else
 	{
-		printf("¶ÓÁÐÒÑÂú\n");
+		printf("é˜Ÿåˆ—å·²æ»¡\n");
 		return 1;
 	}
 }*/
 
-//»ñÈ¡¶ÓÍ·ÔªËØ
+//èŽ·å–é˜Ÿå¤´å…ƒç´ 
 int getHead(Queue* Q, ElemType* e)
 {
 	if (Q->front == Q->rear)
 	{
-		printf("¿ÕµÄ\n");
+		printf("ç©ºçš„\n");
 		return 0;
 	}
 	*e = Q->data[Q->front];
