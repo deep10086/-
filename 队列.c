@@ -107,6 +107,17 @@ int getHead(Queue* Q, ElemType* e)
 	*e = Q->data[Q->front];
 	return 1;
 }
+//链式结构中的出队代码
+//void deQueue(Queue* q, ElemType* e) {
+//	Queue* p = q->front->next;
+//	*e = p->data;
+//	q->front->next = q->front->next->next;
+//	if(p==q->rear)
+//	{
+//		q->rear = q->front;
+//	}
+//	free(p);
+//}
 
 int main(int argc, char const* argv[])
 {
