@@ -9,11 +9,11 @@ typedef struct TreeNode {
 typedef TreeNode* BiTree;
 char str[] = "ABDH#K###E##CFI###G#J##";
 int id = 0;
-//Éú³ÉÊ÷
+//ç”Ÿæˆæ ‘
 void creatTree(BiTree* T) {
 	ElemType ch;
 	ch = str[id++];
-	if (ch == '#')//µÚÒ»´ÎÕâÀïÅª³ÉË«ÒýºÅÁË 
+	if (ch == '#')//ç¬¬ä¸€æ¬¡è¿™é‡Œå¼„æˆåŒå¼•å·äº† 
 	{
 		*T = NULL;
 	}
@@ -24,12 +24,12 @@ void creatTree(BiTree* T) {
 		creatTree(&(*T)->rchi);
 	}
 }
-//¶ÁÈ¡Ê÷
+//è¯»å–æ ‘
 void readTree(BiTree T){
 	if (T == NULL) {
 		return;
 	}
-	printf("%c", T->data);//Ç°Ðò
+	printf("%c", T->data);//å‰åº
 	readTree(T->lchi);
 	readTree(T->rchi);
 
