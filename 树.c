@@ -9,7 +9,7 @@ typedef struct TreeNode {
 typedef TreeNode* BiTree;
 char str[] = "ABDH#K###E##CFI###G#J##";
 int id = 0;
-//生成树
+//生成树(前序 第一次到达 中序 转弯时 后序 返回时)
 void creatTree(BiTree* T) {
 	ElemType ch;
 	ch = str[id++];
