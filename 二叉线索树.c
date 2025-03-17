@@ -13,7 +13,7 @@ typedef ThreadNode* ThreadTree;
 char str[]= "ABDH##I##EJ###CF##G##";
 int idx = 0;
 ThreadTree prev;
-//´´½¨Ê÷
+//åˆ›å»ºæ ‘
 void creatTree(ThreadTree* T) {
 	ElemType ch;
 	ch = str[idx++];
@@ -34,9 +34,9 @@ void creatTree(ThreadTree* T) {
 			(*T)->rtag = 0;
 	}
 }
-// Ï¸ÖÂÏßË÷»¯
+// ç»†è‡´çº¿ç´¢åŒ–
 void threading(ThreadTree T) {
-	if (T != NULL) {//ÏÈ´¦Àí×óº¢×Ó È»ºó±¾½Úµã Ö®ºóÓÒº¢×Ó ÏÈÇ°ÇıÈ»ºóºó¼Ì Ö®ºó¸üĞÂprev
+	if (T != NULL) {//å…ˆå¤„ç†å·¦å­©å­ ç„¶åæœ¬èŠ‚ç‚¹ ä¹‹åå³å­©å­ å…ˆå‰é©±ç„¶ååç»§ ä¹‹åæ›´æ–°prev
 		threading(T->lchi);
 		if (T->lchi == NULL)
 		{
@@ -51,7 +51,7 @@ void threading(ThreadTree T) {
 		threading(T->rchi);
 	}
 }
-//³õ²½ÏßË÷»¯
+//åˆæ­¥çº¿ç´¢åŒ–
 void inithreading(ThreadTree T,ThreadTree*head) {
 	(*head) = (ThreadTree)malloc(sizeof(ThreadNode));
 	(*head)->ltag = 0;
@@ -64,14 +64,14 @@ void inithreading(ThreadTree T,ThreadTree*head) {
 	{
 		(*head)->lchi = T;
 		prev = (*head);
-		threading(T);//ÕâÀïÏßË÷»¯ÖĞ¼ä
+		threading(T);//è¿™é‡Œçº¿ç´¢åŒ–ä¸­é—´
 		prev->rchi = (*head);
 		prev->rtag = 1;
 		(*head)->rchi = prev;
 	}
 }
 
-//±éÀú
+//éå†
 void inOrder(ThreadTree head) {
 	ThreadTree cur = head->lchi;
 	while (cur != head) {
@@ -97,3 +97,4 @@ int main() {
 
 	return 0;
 }
+//ã€çº¿ç´¢äºŒå‰æ ‘-åˆ›å»º-å“”å“©å“”å“©ã€‘ https://b23.tv/iEqfZwn
