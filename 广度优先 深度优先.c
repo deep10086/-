@@ -10,7 +10,7 @@ typedef struct {
 	Vertex ver[MAXSIZE];
 }MatGraph;
 int visited[MAXSIZE];
-int front = 0;
+int front = 0;//DFS不需要
 int rear = 0;
 int que[MAXSIZE];
 //制图
@@ -93,6 +93,17 @@ void bfs(MatGraph G){
 
 
 }
+//深度遍历
+void dfs(MatGraph G,int i) {
+	visited[i] = 1;
+	printf("%c", G.ver[i]);
+	for (int j = 0; j < G.verNum; j++) {
+		if (G.area[i][j] == 1 && visited[j] == 0) {
+			dfs(G, j);
+		}
+	}
+
+}
 int main() {
 	MatGraph G;
 	creatGraph(&G);
@@ -103,5 +114,6 @@ int main() {
 		visited[i] = 0;
 	}
 	bfs(G);
+	dfs(G, 0);
 	return 0;
 }
