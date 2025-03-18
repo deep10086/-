@@ -73,6 +73,24 @@ void creatGraph(MatGraph* G) {
 }
 //广度遍历
 void bfs(MatGraph G){
+	int i = 0;
+	visited[i] = 1;
+	printf("%c", G.ver[i]);
+	que[rear] = i;
+	rear++;
+	while (rear != front) {
+		i = que[front];//出队
+		front++;
+		for (int j = 0; j < G.ver[MAXSIZE]; j++) {
+			if (G.area[i][j] == 1 && visited[j] != 1) {
+				visited[j] = 1;
+				printf("%c", G.ver[j]);
+				que[rear] = j;
+				rear++;
+			}
+		}
+	}
+
 
 }
 int main() {
