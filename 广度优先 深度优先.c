@@ -13,7 +13,7 @@ int visited[MAXSIZE];
 int front = 0;
 int rear = 0;
 int que[MAXSIZE];
-//ÖÆÍ¼
+//åˆ¶å›¾
 void creatGraph(MatGraph* G) {
 	G->verNum = 9;
 	G->edgeNum = 15;
@@ -71,14 +71,14 @@ void creatGraph(MatGraph* G) {
 		}
 	}
 }
-//¹ã¶È±éÀú
+//å¹¿åº¦éå†
 void bfs(MatGraph G){
 
 }
 int main() {
 	MatGraph G;
 	creatGraph(&G);
-	//¿Õ¼ä»»Ê±¼ä Êı×é¼ÇÂ¼·ÃÎÊ×´Ì¬ flag
+	//ç©ºé—´æ¢æ—¶é—´ æ•°ç»„è®°å½•è®¿é—®çŠ¶æ€ flag
 
 	for (int i = 0; i < G.verNum; i++)
 	{
