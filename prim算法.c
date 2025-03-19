@@ -124,7 +124,7 @@ void prime(MatGraph* G) {
 		for (int j = 0; j < G->verNum; j++)
 		{
 			//与新结点可连接的边进行比较，有比weight小的就替换
-			if (weight[j] != 0 && G->area[k][j] < weight[j])//第三个条件可以不要
+			if (weight[j] != 0 && G->area[k][j] < weight[j])//&& G->area[k][j] != MAX第三个条件可以不要
 			{
 				weight[j] = G->area[k][j];
 				vex_edge[j] = k;
