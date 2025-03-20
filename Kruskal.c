@@ -111,6 +111,12 @@ void swap(Edges* edges, int i, int j)
 	edges[i].weight = edges[j].weight;
 	edges[j].weight = temp;
 }
+int find(int* parent, int x) {
+	if (parent[x] != x) {
+		parent[x] = find(parent, parent[x]);  // 递归路径压缩
+	}
+	return parent[x];
+}
 void sortEdges(Edges edges[], int edgeNum) {
 	for (int i = 0; i < edgeNum; i++)
 	{
@@ -128,7 +134,7 @@ void Kruskal(MatGraph G) {
 	Edges edges[MAXEDGE];
 	int k = 0;
 	for (int i = 0; i < G.verNum;i++) {
-		for (int j= i+1; i < G.verNum; i++) {
+		for (int j= i+1; j< G.verNum; j++) {
 			if (G.area[i][j] < MAX) {
 				edges[k].begin = i;
 				edges[k].end = j;
@@ -139,6 +145,29 @@ void Kruskal(MatGraph G) {
 
 	}
 	sortEdges(edges, G.edgeNum);
+	/*并查集操作：
+	初始化：parent数组初始化为本身，表示每个顶点初始时独立成树。
+	查找根节点：find函数递归查找顶点所属树的根节点。
+	合并树：若两顶点的根不同（n != m），则将一棵树的根指向另一棵树的根（parent[n] = m）*/
+int fa[MAXSIZE];
+for (int i = 0; i < G.verNum; i++) {
+	fa[i] = i;
+}
+int n, m;
+int count = 0;
+for (int i = 0; i < G.edgeNum && count < G.verNum - 1; i++)
+{
+	n = find(fa, edges[i].begin);//6
+	m = find(fa, edges[i].end);//6
+
+	if (n != m)
+	{
+		fa[n] = m;
+		printf("(%d, %d) ", edges[i].begin, edges[i].end);
+		printf("(%c, %c) %d\n", G.ver[edges[i].begin], G.ver[edges[i].end], edges[i].weight);
+		count++;
+	}
+}
 }
 int main() {
 	MatGraph G;
