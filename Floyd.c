@@ -89,8 +89,8 @@ int choose(int distance[], int found[], int vertex_num)
 }
 void dijkstra(Mat_Graph G, int begin) {
 	int found[MAXSIZE];
-	int distance[MAXSIZE];//beginÄÇµãµ½ÖÕµãµÄ¾àÀë
-	int path[MAXSIZE];//¾àÀëÄ³µã×î½üµÄµã
+	int distance[MAXSIZE];//beginé‚£ç‚¹åˆ°ç»ˆç‚¹çš„è·ç¦»
+	int path[MAXSIZE];//è·ç¦»æŸç‚¹æœ€è¿‘çš„ç‚¹
 	for (int i = 0; i < G.vertex_num; i++)
 	{
 		found[i] = 0;
@@ -99,7 +99,7 @@ void dijkstra(Mat_Graph G, int begin) {
 	}
 	found[begin] = 1;
 	distance[begin] = 0;
-	int next;//»ñÈ¡¾Ö²¿×î¶Ì ÒÔ¸üĞÂºóµÄ½ÚµãÎªÔ­µã
+	int next;//è·å–å±€éƒ¨æœ€çŸ­ ä»¥æ›´æ–°åçš„èŠ‚ç‚¹ä¸ºåŸç‚¹
 	for (int i = 1; i < G.vertex_num; i++)
 	{
 		next = choose(distance, found, G.vertex_num);
