@@ -5,7 +5,7 @@ typedef int VertextType;
 typedef int EdgeType;
 
 #define MAXSIZE 100
-#define MAX 0x7fffffff//¶àµÄ
+#define MAX 0x7fffffff//å¤šçš„
 
 typedef struct
 {
@@ -18,7 +18,7 @@ typedef struct
 typedef struct EdgeNode
 {
 	int edge_vex;
-	int weight;//¶àµÄ È¨
+	int weight;//å¤šçš„ æƒ
 	struct EdgeNode* next;
 }EdgeNode;
 
@@ -40,7 +40,7 @@ typedef struct
 
 typedef Adj_Graph* Adj_List_Graph;
 
-//ºóÃæÓÃÕ»
+//åé¢ç”¨æ ˆ
 void create_graph(Mat_Graph* G)
 {
 	G->vertex_num = 10;
@@ -61,7 +61,7 @@ void create_graph(Mat_Graph* G)
 			}
 			else
 			{
-				G->arc[i][j] = MAX;//²»Í¨ÔòÎª×î´óÖµ
+				G->arc[i][j] = MAX;//ä¸é€šåˆ™ä¸ºæœ€å¤§å€¼
 			}
 		}
 	}
@@ -101,7 +101,7 @@ void create_adj_graph(Mat_Graph G, Adj_List_Graph* ALG)
 	{
 		for (int j = 0; j < G.vertex_num; j++)
 		{
-			if (G.arc[i][j] != 0 && G.arc[i][j] < MAX)//·Ç¶Ô½ÇÏß ÓĞÈ¨ j=i+1Ã²ËÆÒ²ĞĞ
+			if (G.arc[i][j] != 0 && G.arc[i][j] < MAX)//éå¯¹è§’çº¿ æœ‰æƒ j=i+1è²Œä¼¼ä¹Ÿè¡Œ
 			{
 				e = (EdgeNode*)malloc(sizeof(EdgeNode));
 				e->edge_vex = j;
@@ -120,7 +120,7 @@ void critical_path(Adj_List_Graph ALG)
 	int top = -1;
 	int top2 = -1;
 	int stack[MAXSIZE];
-	int stack2[MAXSIZE];//Êı×éÄ£ÄâÕ»
+	int stack2[MAXSIZE];//æ•°ç»„æ¨¡æ‹Ÿæ ˆ
 	int etv[MAXSIZE];
 	int ltv[MAXSIZE];
 	int curr;
@@ -134,7 +134,7 @@ void critical_path(Adj_List_Graph ALG)
 		}
 	}
 
-	for (int i = 0; i < ALG->vertex_num; i++)//×îÔç·¢Éú
+	for (int i = 0; i < ALG->vertex_num; i++)//æœ€æ—©å‘ç”Ÿ
 	{
 		etv[i] = 0;
 	}
